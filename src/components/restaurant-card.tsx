@@ -1,7 +1,9 @@
+
 import Link from "next/link";
 import { Star, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Restaurant } from "@/lib/data";
+import Image from "next/image";
 
 interface RestaurantCardProps {
   restaurant: Restaurant;
@@ -12,12 +14,14 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
     <Link href={`/restaurant/${restaurant.id}`}>
       <Card className="group overflow-hidden border-none transition-all hover:shadow-lg hover:-translate-y-1">
         <div className="relative aspect-[4/3] w-full overflow-hidden">
-          <img
+          <Image
             src={restaurant.image}
             alt={restaurant.name}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            data-ai-hint="restaurant food"
           />
-          <div className="absolute bottom-3 left-3 rounded bg-white/90 px-2 py-1 text-xs font-bold text-primary backdrop-blur-sm">
+          <div className="absolute bottom-3 left-3 rounded bg-white/90 px-2 py-1 text-xs font-bold text-primary backdrop-blur-sm z-10">
             ₹{restaurant.costForTwo} for two
           </div>
         </div>

@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from "next/link";
@@ -8,6 +9,7 @@ import { useCart } from "@/hooks/use-cart";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 export function Navbar() {
   const { cart, totalItems, totalPrice, updateQuantity } = useCart();
@@ -17,8 +19,8 @@ export function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded bg-primary p-1.5 text-primary-foreground">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+            <div className="h-8 w-8 rounded bg-primary p-1.5 text-primary-foreground flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="h-full w-full"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
             </div>
             <span className="text-xl font-bold text-primary tracking-tight">FoodFetch</span>
           </Link>
@@ -48,23 +50,23 @@ export function Navbar() {
 
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" className="relative">
+              <Button variant="ghost" className="relative h-10 w-10 p-0">
                 <ShoppingCart className="h-5 w-5" />
                 {totalItems > 0 && (
-                  <Badge className="absolute -right-1 -top-1 h-5 w-5 justify-center bg-accent text-accent-foreground p-0">
+                  <Badge className="absolute -right-1 -top-1 h-5 w-5 justify-center bg-accent text-accent-foreground p-0 text-[10px]">
                     {totalItems}
                   </Badge>
                 )}
               </Button>
             </SheetTrigger>
-            <SheetContent className="w-full sm:max-w-md">
+            <SheetContent className="w-full sm:max-w-md flex flex-col h-full">
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
                   <ShoppingCart className="h-5 w-5" />
                   Your Cart
                 </SheetTitle>
               </SheetHeader>
-              <div className="mt-8 flex flex-col gap-6 h-[calc(100vh-200px)] overflow-y-auto">
+              <div className="mt-8 flex-1 overflow-y-auto pr-2 space-y-6">
                 {cart.length === 0 ? (
                   <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
                     <div className="rounded-full bg-muted p-6">
@@ -78,8 +80,14 @@ export function Navbar() {
                 ) : (
                   cart.map((item) => (
                     <div key={item.id} className="flex items-center gap-4">
-                      <div className="h-16 w-16 overflow-hidden rounded-md">
-                        <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
+                      <div className="relative h-16 w-16 overflow-hidden rounded-md flex-shrink-0">
+                        <Image 
+                          src={item.image} 
+                          alt={item.name} 
+                          fill
+                          className="object-cover" 
+                          data-ai-hint="cart item"
+                        />
                       </div>
                       <div className="flex-1 space-y-1">
                         <div className="flex items-center gap-1.5">
@@ -101,7 +109,7 @@ export function Navbar() {
                 )}
               </div>
               {cart.length > 0 && (
-                <div className="absolute bottom-0 left-0 w-full bg-background p-6 shadow-[0_-10px_20px_-10px_rgba(0,0,0,0.1)]">
+                <div className="pt-6 border-t mt-auto">
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-medium">Subtotal</span>
                     <span className="font-bold text-lg text-primary">₹{totalPrice}</span>

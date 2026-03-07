@@ -1,16 +1,19 @@
+
 "use client"
 
+import * as React from "react";
 import { useParams } from "next/navigation";
 import { RESTAURANTS, MenuItem } from "@/lib/data";
-import { Star, Clock, Info, CheckCircle2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Star, Clock, Info } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/use-cart";
 import { useToast } from "@/hooks/use-toast";
+import Image from "next/image";
 
 export default function RestaurantPage() {
-  const { id } = useParams();
+  const params = useParams();
+  const id = params.id as string;
   const restaurant = RESTAURANTS.find(r => r.id === id);
   const { addToCart, updateQuantity, cart } = useCart();
   const { toast } = useToast();
@@ -89,19 +92,27 @@ export default function RestaurantPage() {
                 </div>
                 
                 <div className="relative h-28 w-28 flex-shrink-0">
-                  <img src={item.image} alt={item.name} className="h-full w-full rounded-lg object-cover" />
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2">
+                  <div className="relative h-full w-full">
+                    <Image 
+                      src={item.image} 
+                      alt={item.name} 
+                      fill
+                      className="rounded-lg object-cover" 
+                      data-ai-hint="delicious dish"
+                    />
+                  </div>
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 z-10">
                     {getQty(item.id) > 0 ? (
-                      <div className="flex items-center gap-3 rounded border bg-white px-3 py-1 shadow-md">
-                        <button onClick={() => updateQuantity(item.id, -1)} className="text-primary font-bold">-</button>
+                      <div className="flex items-center gap-3 rounded border bg-background px-3 py-1 shadow-md">
+                        <button onClick={() => updateQuantity(item.id, -1)} className="text-primary font-bold transition-colors hover:text-primary/70">-</button>
                         <span className="text-sm font-bold min-w-[12px] text-center">{getQty(item.id)}</span>
-                        <button onClick={() => updateQuantity(item.id, 1)} className="text-primary font-bold">+</button>
+                        <button onClick={() => updateQuantity(item.id, 1)} className="text-primary font-bold transition-colors hover:text-primary/70">+</button>
                       </div>
                     ) : (
                       <Button 
                         size="sm" 
                         variant="outline" 
-                        className="border-primary text-primary hover:bg-primary/5 shadow-md bg-white font-bold"
+                        className="border-primary text-primary hover:bg-primary/5 shadow-md bg-background font-bold"
                         onClick={() => handleAdd(item)}
                       >
                         ADD
