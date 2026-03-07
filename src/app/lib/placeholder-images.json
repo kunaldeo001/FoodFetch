@@ -1,0 +1,46 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-food",
+      "description": "Delicious gourmet burger with fries",
+      "imageUrl": "https://picsum.photos/seed/food1/1200/600",
+      "imageHint": "gourmet burger"
+    },
+    {
+      "id": "cuisine-indian",
+      "description": "Traditional Indian Thali",
+      "imageUrl": "https://picsum.photos/seed/indian/400/300",
+      "imageHint": "indian food"
+    },
+    {
+      "id": "cuisine-pizza",
+      "description": "Freshly baked Italian pizza",
+      "imageUrl": "https://picsum.photos/seed/pizza/400/300",
+      "imageHint": "pizza"
+    },
+    {
+      "id": "cuisine-sushi",
+      "description": "Assorted sushi platter",
+      "imageUrl": "https://picsum.photos/seed/sushi/400/300",
+      "imageHint": "sushi"
+    },
+    {
+      "id": "rest-1",
+      "description": "Modern restaurant interior",
+      "imageUrl": "https://picsum.photos/seed/rest1/800/600",
+      "imageHint": "restaurant interior"
+    },
+    {
+      "id": "rest-2",
+      "description": "Cozy cafe setup",
+      "imageUrl": "https://picsum.photos/seed/cafe/800/600",
+      "imageHint": "cafe"
+    },
+    {
+      "id": "user-avatar",
+      "description": "User profile picture",
+      "imageUrl": "https://picsum.photos/seed/user/200/200",
+      "imageHint": "user profile"
+    }
+  ]
+}
