@@ -1,3 +1,82 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-food",
+      "description": "Delicious gourmet burger with fries",
+      "imageUrl": "https://picsum.photos/seed/food1/1200/600",
+      "imageHint": "gourmet burger"
+    },
+    {
+      "id": "cuisine-biryani",
+      "description": "Authentic chicken biryani with raita",
+      "imageUrl": "https://picsum.photos/seed/biryani/400/400",
+      "imageHint": "chicken biryani"
+    },
+    {
+      "id": "cuisine-pizza",
+      "description": "Freshly baked Italian pizza with melting cheese",
+      "imageUrl": "https://picsum.photos/seed/pizza/400/400",
+      "imageHint": "pepperoni pizza"
+    },
+    {
+      "id": "cuisine-burgers",
+      "description": "Juicy grilled burger with lettuce and tomato",
+      "imageUrl": "https://picsum.photos/seed/burger/400/400",
+      "imageHint": "beef burger"
+    },
+    {
+      "id": "cuisine-north-indian",
+      "description": "Creamy butter chicken with garlic naan",
+      "imageUrl": "https://picsum.photos/seed/curry/400/400",
+      "imageHint": "indian curry"
+    },
+    {
+      "id": "cuisine-chinese",
+      "description": "Stir-fried noodles with colorful vegetables",
+      "imageUrl": "https://picsum.photos/seed/noodles/400/400",
+      "imageHint": "chinese noodles"
+    },
+    {
+      "id": "cuisine-desserts",
+      "description": "Rich chocolate cake with whipped cream",
+      "imageUrl": "https://picsum.photos/seed/cake/400/400",
+      "imageHint": "chocolate dessert"
+    },
+    {
+      "id": "cuisine-healthy",
+      "description": "Fresh green salad with avocados",
+      "imageUrl": "https://picsum.photos/seed/salad/400/400",
+      "imageHint": "healthy salad"
+    },
+    {
+      "id": "cuisine-south-indian",
+      "description": "Crispy masala dosa with sambar",
+      "imageUrl": "https://picsum.photos/seed/dosa/400/400",
+      "imageHint": "masala dosa"
+    },
+    {
+      "id": "rest-biryani-blues",
+      "description": "Biryani Blues Restaurant Front",
+      "imageUrl": "https://picsum.photos/seed/rest-biryani/800/600",
+      "imageHint": "indian restaurant"
+    },
+    {
+      "id": "rest-pizza-paradise",
+      "description": "Pizza Paradise Restaurant Interior",
+      "imageUrl": "https://picsum.photos/seed/rest-pizza/800/600",
+      "imageHint": "pizza shop"
+    },
+    {
+      "id": "rest-green-wok",
+      "description": "Green Wok Asian Kitchen",
+      "imageUrl": "https://picsum.photos/seed/rest-wok/800/600",
+      "imageHint": "asian kitchen"
+    },
+    {
+      "id": "user-avatar",
+      "description": "User profile picture",
+      "imageUrl": "https://picsum.photos/seed/user/200/200",
+      "imageHint": "man profile"
+    }
+  ]
 }
