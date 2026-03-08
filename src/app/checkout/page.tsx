@@ -72,7 +72,6 @@ export default function CheckoutPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
-          {/* Step 1: Address */}
           <Card className={step === 1 ? 'border-primary border-2 shadow-md' : 'opacity-70'}>
             <CardHeader className="flex flex-row items-center gap-4">
               <div className={`p-2 rounded-full ${step >= 1 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
@@ -100,7 +99,6 @@ export default function CheckoutPage() {
             </CardContent>
           </Card>
 
-          {/* Step 2: Payment */}
           <Card className={step === 2 ? 'border-primary border-2 shadow-md' : step < 2 ? 'opacity-50 pointer-events-none' : 'opacity-70'}>
             <CardHeader className="flex flex-row items-center gap-4">
               <div className={`p-2 rounded-full ${step >= 2 ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
@@ -122,21 +120,11 @@ export default function CheckoutPage() {
                     <div className="h-2 w-2 bg-primary rounded-full" />
                   </div>
                 </div>
-                <div className="border rounded-lg p-4 flex items-center justify-between opacity-50">
-                   <div className="flex items-center gap-4">
-                    <div className="bg-muted p-2 rounded">📱</div>
-                    <div>
-                      <p className="font-medium">UPI (GPay, PhonePe)</p>
-                      <p className="text-xs text-muted-foreground">Fast and Secure</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Order Summary Sidebar */}
         <div>
           <Card className="sticky top-24">
             <CardHeader>

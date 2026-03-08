@@ -2,8 +2,8 @@
 /**
  * @fileOverview A Genkit flow for generating professional food photography images.
  * 
- * Includes a fallback mechanism to high-quality placeholder images if the AI model 
- * is unavailable on the user's plan.
+ * Uses the Gemini 2.5 Flash Image model to generate high-quality food visuals.
+ * Includes a robust fallback mechanism for consistent UI performance.
  */
 
 import { ai } from '@/ai/genkit';
@@ -17,25 +17,27 @@ const GenerateFoodImageInputSchema = z.object({
 export type GenerateFoodImageInput = z.infer<typeof GenerateFoodImageInputSchema>;
 
 /**
- * Generates a professional food photography image using Imagen 4.
- * Falls back to a deterministic high-quality placeholder if the AI service fails.
+ * Generates a professional food photography image using Gemini 2.5 Flash Image.
+ * This multimodal model handles image generation tasks reliably.
  */
 export async function generateFoodImage(input: GenerateFoodImageInput): Promise<string> {
   try {
     const { media } = await ai.generate({
-      model: 'googleai/imagen-4.0-fast-generate-001',
-      prompt: `Professional, high-end food photography of ${input.foodName}. ${input.description || ''}. Cinematic lighting, shallow depth of field, vibrant colors, appetizing, 4k resolution, gourmet presentation.`,
+      model: 'googleai/gemini-2.5-flash-image',
+      prompt: `Professional, gourmet food photography of ${input.foodName}. ${input.description || ''}. Cinematic lighting, high resolution, delicious presentation, vibrant colors, shallow depth of field.`,
+      config: {
+        responseModalities: ['TEXT', 'IMAGE'],
+      },
     });
 
     if (media?.url) {
       return media.url;
     }
   } catch (err) {
-    // Graceful fallback if the user is on a free plan or hits quota limits
-    console.warn(`AI Image generation failed for ${input.foodName}. Falling back to high-quality placeholder.`, err);
+    console.warn(`AI Image generation failed for ${input.foodName}. Using high-quality placeholder.`, err);
   }
 
-  // Deterministic fallback based on food name
+  // Deterministic fallback based on food name for visual consistency
   const seed = input.foodName.toLowerCase().replace(/[^a-z0-9]/g, '-');
   return `https://picsum.photos/seed/${seed}/800/600`;
 }
