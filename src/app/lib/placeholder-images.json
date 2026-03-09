@@ -1,118 +1,117 @@
-
 {
   "placeholderImages": [
     {
       "id": "hero-food",
       "description": "Delicious gourmet burger with fries",
-      "imageUrl": "https://picsum.photos/seed/food1/1200/600",
+      "imageUrl": "https://picsum.photos/seed/hero-food-correct/1200/600",
       "imageHint": "gourmet burger"
     },
     {
       "id": "cuisine-biryani",
       "description": "Authentic chicken biryani with raita",
-      "imageUrl": "https://picsum.photos/seed/biryani-1/400/400",
+      "imageUrl": "https://picsum.photos/seed/biryani-correct/400/400",
       "imageHint": "chicken biryani"
     },
     {
       "id": "cuisine-pizza",
       "description": "Freshly baked Italian pizza with melting cheese",
-      "imageUrl": "https://picsum.photos/seed/pizza-1/400/400",
+      "imageUrl": "https://picsum.photos/seed/pizza-correct/400/400",
       "imageHint": "pepperoni pizza"
     },
     {
       "id": "cuisine-burgers",
       "description": "Juicy grilled burger with lettuce and tomato",
-      "imageUrl": "https://picsum.photos/seed/burger-1/400/400",
+      "imageUrl": "https://picsum.photos/seed/burger-correct/400/400",
       "imageHint": "beef burger"
     },
     {
       "id": "cuisine-north-indian",
       "description": "Creamy butter chicken with garlic naan",
-      "imageUrl": "https://picsum.photos/seed/curry-1/400/400",
+      "imageUrl": "https://picsum.photos/seed/curry-correct/400/400",
       "imageHint": "indian curry"
     },
     {
       "id": "cuisine-chinese",
       "description": "Stir-fried noodles with colorful vegetables",
-      "imageUrl": "https://picsum.photos/seed/noodles-1/400/400",
+      "imageUrl": "https://picsum.photos/seed/noodles-correct/400/400",
       "imageHint": "chinese noodles"
     },
     {
       "id": "cuisine-desserts",
       "description": "Rich chocolate cake with whipped cream",
-      "imageUrl": "https://picsum.photos/seed/cake-1/400/400",
+      "imageUrl": "https://picsum.photos/seed/cake-correct/400/400",
       "imageHint": "chocolate dessert"
     },
     {
       "id": "cuisine-healthy",
       "description": "Fresh green salad with avocados",
-      "imageUrl": "https://picsum.photos/seed/salad-1/400/400",
+      "imageUrl": "https://picsum.photos/seed/salad-correct/400/400",
       "imageHint": "healthy salad"
     },
     {
       "id": "cuisine-south-indian",
       "description": "Crispy masala dosa with sambar",
-      "imageUrl": "https://picsum.photos/seed/dosa-1/400/400",
+      "imageUrl": "https://picsum.photos/seed/dosa-correct/400/400",
       "imageHint": "masala dosa"
     },
     {
       "id": "rest-biryani-blues",
       "description": "Biryani Blues Restaurant Front",
-      "imageUrl": "https://picsum.photos/seed/rest-biryani-1/800/600",
+      "imageUrl": "https://picsum.photos/seed/rest-biryani-correct/800/600",
       "imageHint": "indian restaurant"
     },
     {
       "id": "rest-pizza-paradise",
       "description": "Pizza Paradise Restaurant Interior",
-      "imageUrl": "https://picsum.photos/seed/rest-pizza-1/800/600",
+      "imageUrl": "https://picsum.photos/seed/rest-pizza-correct/800/600",
       "imageHint": "pizza shop"
     },
     {
       "id": "rest-green-wok",
       "description": "Green Wok Asian Kitchen",
-      "imageUrl": "https://picsum.photos/seed/rest-wok-1/800/600",
+      "imageUrl": "https://picsum.photos/seed/rest-wok-correct/800/600",
       "imageHint": "asian kitchen"
     },
     {
       "id": "user-avatar",
       "description": "User profile picture",
-      "imageUrl": "https://picsum.photos/seed/user-1/200/200",
+      "imageUrl": "https://picsum.photos/seed/user-correct/200/200",
       "imageHint": "man profile"
     },
     {
       "id": "food-m1",
       "description": "Chicken Biryani",
-      "imageUrl": "https://picsum.photos/seed/m1-food/400/300",
+      "imageUrl": "https://picsum.photos/seed/biryani-chicken/400/300",
       "imageHint": "chicken biryani"
     },
     {
       "id": "food-m2",
       "description": "Paneer Tikka",
-      "imageUrl": "https://picsum.photos/seed/m2-food/400/300",
+      "imageUrl": "https://picsum.photos/seed/paneer-tikka/400/300",
       "imageHint": "paneer tikka"
     },
     {
       "id": "food-m3",
       "description": "Butter Chicken",
-      "imageUrl": "https://picsum.photos/seed/m3-food/400/300",
+      "imageUrl": "https://picsum.photos/seed/butter-chicken/400/300",
       "imageHint": "butter chicken"
     },
     {
       "id": "food-m4",
       "description": "Margherita Pizza",
-      "imageUrl": "https://picsum.photos/seed/m4-food/400/300",
+      "imageUrl": "https://picsum.photos/seed/pizza-margherita/400/300",
       "imageHint": "cheese pizza"
     },
     {
       "id": "food-m5",
       "description": "Pepperoni Pizza",
-      "imageUrl": "https://picsum.photos/seed/m5-food/400/300",
+      "imageUrl": "https://picsum.photos/seed/pizza-pepperoni/400/300",
       "imageHint": "pepperoni pizza"
     },
     {
       "id": "food-m6",
       "description": "Garlic Bread",
-      "imageUrl": "https://picsum.photos/seed/m6-food/400/300",
+      "imageUrl": "https://picsum.photos/seed/garlic-bread-sticks/400/300",
       "imageHint": "garlic bread"
     }
   ]

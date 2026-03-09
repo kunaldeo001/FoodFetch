@@ -234,11 +234,11 @@ const MenubarShortcut = ({
     />
   )
 }
-MenubarShortcut.displayname = "MenubarShortcut"
+MenubarShortcut.displayName = "MenubarShortcut"
 
 export {
+  type MenubarMenu,
   Menubar,
-  MenubarMenu,
   MenubarTrigger,
   MenubarContent,
   MenubarItem,
