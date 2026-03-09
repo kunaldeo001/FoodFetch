@@ -1,14 +1,59 @@
+"use client"
 
+import { useState, useMemo } from "react";
 import { CATEGORIES, RESTAURANTS } from "@/lib/data";
 import { RestaurantCard } from "@/components/restaurant-card";
 import { Recommendations } from "@/components/recommendations";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Search, SlidersHorizontal, Star } from "lucide-react";
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+
+  const filteredRestaurants = useMemo(() => {
+    return RESTAURANTS.filter(r => {
+      const matchesSearch = r.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                           r.cuisine.toLowerCase().includes(searchQuery.toLowerCase());
+      
+      const matchesFilter = !activeFilter || 
+                           (activeFilter === "4.0+" && r.rating >= 4.0) ||
+                           (activeFilter === "Pure Veg" && r.menu.every(m => m.isVeg));
+      
+      return matchesSearch && matchesFilter;
+    });
+  }, [searchQuery, activeFilter]);
+
   return (
     <div className="container mx-auto px-4 py-8 space-y-12">
+      {/* Hero Search Section */}
+      <section className="relative h-[300px] w-full rounded-3xl overflow-hidden mb-12 flex flex-col items-center justify-center text-center p-6 bg-primary/5">
+        <div className="absolute inset-0 z-0 opacity-10">
+          <Image 
+            src="https://picsum.photos/seed/food-bg/1200/600" 
+            alt="Hero Background" 
+            fill 
+            className="object-cover"
+          />
+        </div>
+        <div className="relative z-10 max-w-2xl space-y-6">
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-primary">Craving something special?</h1>
+          <p className="text-lg text-muted-foreground font-medium italic">Discover the best food & drinks in your city</p>
+          <div className="relative w-full max-w-lg mx-auto">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Input 
+              placeholder="Search for 'Pizza', 'Biryani' or 'Burger'..." 
+              className="h-14 pl-12 pr-4 rounded-full shadow-lg border-primary/20 bg-background text-lg"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Categories Scroller */}
       <section className="space-y-4">
         <h2 className="text-2xl font-bold">What's on your mind?</h2>
@@ -16,8 +61,12 @@ export default function Home() {
           {CATEGORIES.map((cat) => {
             const imgData = PlaceHolderImages.find(img => img.id === cat.imageId);
             return (
-              <div key={cat.name} className="flex flex-col items-center gap-2 min-w-[100px] cursor-pointer group">
-                <div className="relative h-24 w-24 rounded-full overflow-hidden bg-muted group-hover:shadow-md transition-shadow">
+              <div 
+                key={cat.name} 
+                className="flex flex-col items-center gap-2 min-w-[100px] cursor-pointer group"
+                onClick={() => setSearchQuery(cat.name)}
+              >
+                <div className="relative h-24 w-24 rounded-full overflow-hidden bg-muted group-hover:shadow-md transition-shadow ring-2 ring-transparent group-hover:ring-primary/20">
                   <Image 
                     src={imgData?.imageUrl || `https://picsum.photos/seed/${cat.name}/200/200`} 
                     alt={cat.name} 
@@ -26,7 +75,7 @@ export default function Home() {
                     data-ai-hint={imgData?.imageHint || "food category"}
                   />
                 </div>
-                <span className="text-sm font-medium text-center group-hover:text-primary">{cat.name}</span>
+                <span className="text-sm font-medium text-center group-hover:text-primary transition-colors">{cat.name}</span>
               </div>
             );
           })}
@@ -34,28 +83,51 @@ export default function Home() {
       </section>
 
       {/* AI Recommendations */}
-      <Recommendations />
+      {!searchQuery && <Recommendations />}
 
       {/* Main Restaurant Listing */}
       <section className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Restaurants with online delivery</h2>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <h2 className="text-2xl font-bold">
+            {searchQuery ? `Results for "${searchQuery}"` : "Restaurants with online delivery"}
+          </h2>
           <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0">
-            <Button variant="outline" size="sm" className="rounded-full whitespace-nowrap">Ratings 4.0+</Button>
-            <Button variant="outline" size="sm" className="rounded-full whitespace-nowrap">Pure Veg</Button>
-            <Button variant="outline" size="sm" className="rounded-full whitespace-nowrap">Price</Button>
+            <Button 
+              variant={activeFilter === "4.0+" ? "default" : "outline"} 
+              size="sm" 
+              className="rounded-full whitespace-nowrap"
+              onClick={() => setActiveFilter(activeFilter === "4.0+" ? null : "4.0+")}
+            >
+              Ratings 4.0+ <Star className="ml-1 h-3 w-3 fill-current" />
+            </Button>
+            <Button 
+              variant={activeFilter === "Pure Veg" ? "default" : "outline"} 
+              size="sm" 
+              className="rounded-full whitespace-nowrap"
+              onClick={() => setActiveFilter(activeFilter === "Pure Veg" ? null : "Pure Veg")}
+            >
+              Pure Veg
+            </Button>
+            <Button variant="outline" size="sm" className="rounded-full whitespace-nowrap gap-2">
+              <SlidersHorizontal className="h-3 w-3" /> Filters
+            </Button>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {RESTAURANTS.map((resto) => (
-            <RestaurantCard key={resto.id} restaurant={resto} />
-          ))}
-          {/* Duplicating for filler */}
-          {RESTAURANTS.slice(0, 1).map((resto) => (
-            <RestaurantCard key={`${resto.id}-dup`} restaurant={resto} />
-          ))}
-        </div>
+        {filteredRestaurants.length > 0 ? (
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredRestaurants.map((resto) => (
+              <RestaurantCard key={resto.id} restaurant={resto} />
+            ))}
+          </div>
+        ) : (
+          <div className="py-20 text-center space-y-4">
+            <div className="text-4xl">🍕</div>
+            <h3 className="text-xl font-bold">No restaurants found</h3>
+            <p className="text-muted-foreground">Try searching for something else or clearing filters.</p>
+            <Button variant="link" onClick={() => { setSearchQuery(""); setActiveFilter(null); }}>Clear all</Button>
+          </div>
+        )}
       </section>
     </div>
   );
