@@ -1,4 +1,3 @@
-
 export interface MenuItem {
   id: string;
   name: string;
@@ -130,6 +129,32 @@ export const RESTAURANTS: Restaurant[] = [
     description: "Fresh, nutritious, and delicious bowls for a better you.",
     menu: [
       { id: "m14", name: "Avocado Quinoa Salad", description: "Fresh greens with avocado, quinoa, and lemon dressing.", price: 340, image: "https://picsum.photos/seed/avocado-salad/400/300", category: "Salads", isVeg: true, rating: true }
+    ]
+  },
+  {
+    id: "r8",
+    name: "The Curry House",
+    cuisine: "North Indian",
+    rating: 4.0,
+    deliveryTime: "40-45 min",
+    costForTwo: 450,
+    image: "https://picsum.photos/seed/rest-curry/800/600",
+    description: "Home-style Indian curries and fragrant basmati rice.",
+    menu: [
+      { id: "m15", name: "Kadai Paneer", description: "Paneer cooked in a spicy gravy with bell peppers.", price: 280, image: "https://picsum.photos/seed/kadai-paneer/400/300", category: "Main Course", isVeg: true, rating: true }
+    ]
+  },
+  {
+    id: "r9",
+    name: "Pasta Palace",
+    cuisine: "Italian, Pasta",
+    rating: 4.3,
+    deliveryTime: "25-30 min",
+    costForTwo: 700,
+    image: "https://picsum.photos/seed/rest-pasta/800/600",
+    description: "Authentic Italian pastas and creamy sauces.",
+    menu: [
+      { id: "m16", name: "Penne Alfredo", description: "Penne pasta in a rich and creamy white sauce.", price: 399, image: "https://picsum.photos/seed/pasta-alfredo/400/300", category: "Pasta", isVeg: true, rating: true }
     ]
   }
 ];

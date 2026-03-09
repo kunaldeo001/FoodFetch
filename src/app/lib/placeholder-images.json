@@ -1,4 +1,3 @@
-
 {
   "placeholderImages": [
     {
@@ -74,76 +73,22 @@
       "imageHint": "asian kitchen"
     },
     {
-      "id": "rest-burger-king",
-      "description": "Burger King store front",
-      "imageUrl": "https://picsum.photos/seed/rest-burger/800/600",
-      "imageHint": "burger joint"
+      "id": "rest-curry",
+      "description": "The Curry House facade",
+      "imageUrl": "https://picsum.photos/seed/rest-curry/800/600",
+      "imageHint": "indian restaurant facade"
     },
     {
-      "id": "rest-dosa-delight",
-      "description": "Dosa Delight South Indian restaurant",
-      "imageUrl": "https://picsum.photos/seed/rest-dosa/800/600",
-      "imageHint": "south indian"
-    },
-    {
-      "id": "rest-sweet-spot",
-      "description": "The Sweet Spot bakery",
-      "imageUrl": "https://picsum.photos/seed/rest-bakery/800/600",
-      "imageHint": "dessert shop"
-    },
-    {
-      "id": "rest-healthy-bowls",
-      "description": "Healthy Bowls salad bar",
-      "imageUrl": "https://picsum.photos/seed/rest-salad/800/600",
-      "imageHint": "healthy food"
-    },
-    {
-      "id": "food-m1", "description": "Chicken Biryani", "imageUrl": "https://picsum.photos/seed/biryani-chicken/400/300", "imageHint": "chicken biryani"
-    },
-    {
-      "id": "food-m2", "description": "Paneer Tikka", "imageUrl": "https://picsum.photos/seed/paneer-tikka/400/300", "imageHint": "paneer tikka"
-    },
-    {
-      "id": "food-m3", "description": "Butter Chicken", "imageUrl": "https://picsum.photos/seed/butter-chicken/400/300", "imageHint": "butter chicken"
-    },
-    {
-      "id": "food-m4", "description": "Margherita Pizza", "imageUrl": "https://picsum.photos/seed/pizza-margherita/400/300", "imageHint": "cheese pizza"
-    },
-    {
-      "id": "food-m5", "description": "Pepperoni Pizza", "imageUrl": "https://picsum.photos/seed/pizza-pepperoni/400/300", "imageHint": "pepperoni pizza"
-    },
-    {
-      "id": "food-m6", "description": "Garlic Bread", "imageUrl": "https://picsum.photos/seed/garlic-bread-sticks/400/300", "imageHint": "garlic bread"
-    },
-    {
-      "id": "food-m7", "description": "Veg Hakka Noodles", "imageUrl": "https://picsum.photos/seed/veg-noodles/400/300", "imageHint": "chinese noodles"
-    },
-    {
-      "id": "food-m8", "description": "Chicken Manchurian", "imageUrl": "https://picsum.photos/seed/chicken-manchurian/400/300", "imageHint": "chicken manchurian"
-    },
-    {
-      "id": "food-m9", "description": "Whopper", "imageUrl": "https://picsum.photos/seed/whopper/400/300", "imageHint": "beef burger"
-    },
-    {
-      "id": "food-m10", "description": "Veggie Burger", "imageUrl": "https://picsum.photos/seed/veggie-burger/400/300", "imageHint": "veg burger"
-    },
-    {
-      "id": "food-m11", "description": "Masala Dosa", "imageUrl": "https://picsum.photos/seed/masala-dosa/400/300", "imageHint": "masala dosa"
-    },
-    {
-      "id": "food-m12", "description": "Idli Sambhar", "imageUrl": "https://picsum.photos/seed/idli/400/300", "imageHint": "idli sambhar"
-    },
-    {
-      "id": "food-m13", "description": "Chocolate Lava Cake", "imageUrl": "https://picsum.photos/seed/lava-cake/400/300", "imageHint": "chocolate cake"
-    },
-    {
-      "id": "food-m14", "description": "Avocado Salad", "imageUrl": "https://picsum.photos/seed/avocado-salad/400/300", "imageHint": "avocado salad"
+      "id": "rest-pasta",
+      "description": "Pasta Palace cozy interior",
+      "imageUrl": "https://picsum.photos/seed/rest-pasta/800/600",
+      "imageHint": "italian restaurant interior"
     },
     {
       "id": "user-avatar",
-      "description": "User profile picture",
-      "imageUrl": "https://picsum.photos/seed/user/200/200",
-      "imageHint": "man profile"
+      "description": "Kunal Deo profile picture",
+      "imageUrl": "https://picsum.photos/seed/kunal-deo/200/200",
+      "imageHint": "man portrait"
     }
   ]
 }
