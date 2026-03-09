@@ -4,7 +4,7 @@ import { useCart } from "@/hooks/use-cart";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, CreditCard, ShoppingBag, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { MapPin, CreditCard, ShoppingBag, ArrowLeft, CheckCircle2, Banknote } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 export default function CheckoutPage() {
   const { cart, totalPrice, clearCart } = useCart();
   const [step, setStep] = useState(1);
+  const [paymentMethod, setPaymentMethod] = useState<'card' | 'cod'>('card');
   const router = useRouter();
   const { toast } = useToast();
 
@@ -35,7 +36,9 @@ export default function CheckoutPage() {
     clearCart();
     toast({
       title: "Order Placed!",
-      description: "Your delicious food is on the way.",
+      description: paymentMethod === 'cod' 
+        ? "Your order is confirmed. Please keep cash ready at the time of delivery."
+        : "Your delicious food is on the way.",
     });
   };
 
@@ -108,7 +111,10 @@ export default function CheckoutPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="border rounded-lg p-4 flex items-center justify-between cursor-pointer hover:bg-muted/50">
+                <div 
+                  className={`border rounded-lg p-4 flex items-center justify-between cursor-pointer transition-colors ${paymentMethod === 'card' ? 'border-primary bg-primary/5' : 'hover:bg-muted/50'}`}
+                  onClick={() => setPaymentMethod('card')}
+                >
                   <div className="flex items-center gap-4">
                     <div className="bg-muted p-2 rounded">💳</div>
                     <div>
@@ -116,8 +122,26 @@ export default function CheckoutPage() {
                       <p className="text-xs text-muted-foreground">Pay with Visa/Mastercard</p>
                     </div>
                   </div>
-                  <div className="h-4 w-4 rounded-full border border-primary flex items-center justify-center">
-                    <div className="h-2 w-2 bg-primary rounded-full" />
+                  <div className="h-5 w-5 rounded-full border border-primary flex items-center justify-center">
+                    {paymentMethod === 'card' && <div className="h-3 w-3 bg-primary rounded-full" />}
+                  </div>
+                </div>
+
+                <div 
+                  className={`border rounded-lg p-4 flex items-center justify-between cursor-pointer transition-colors ${paymentMethod === 'cod' ? 'border-primary bg-primary/5' : 'hover:bg-muted/50'}`}
+                  onClick={() => setPaymentMethod('cod')}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="bg-muted p-2 rounded">
+                      <Banknote className="w-5 h-5 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="font-medium">Cash on Delivery</p>
+                      <p className="text-xs text-muted-foreground">Pay with cash upon arrival</p>
+                    </div>
+                  </div>
+                  <div className="h-5 w-5 rounded-full border border-primary flex items-center justify-center">
+                    {paymentMethod === 'cod' && <div className="h-3 w-3 bg-primary rounded-full" />}
                   </div>
                 </div>
               </div>
@@ -172,7 +196,7 @@ export default function CheckoutPage() {
                 disabled={step < 2}
                 onClick={handleOrder}
               >
-                Place Order
+                {paymentMethod === 'cod' ? 'Confirm Order' : 'Place Order'}
               </Button>
             </CardContent>
           </Card>
