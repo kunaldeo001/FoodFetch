@@ -22,11 +22,11 @@ export default function ProfilePage() {
             <CardContent className="p-6">
               <div className="flex flex-col items-center text-center gap-4">
                 <Avatar className="h-24 w-24 border-4 border-primary/20">
-                  <AvatarImage src="https://picsum.photos/seed/user/200/200" />
-                  <AvatarFallback>AD</AvatarFallback>
+                  <AvatarImage src="https://picsum.photos/seed/kunal-deo/200/200" alt="Kunal Deo" />
+                  <AvatarFallback>KD</AvatarFallback>
                 </Avatar>
                 <div>
-                  <h2 className="text-xl font-bold">Animesh Das</h2>
+                  <h2 className="text-xl font-bold">Kunal Deo</h2>
                   <p className="text-sm text-muted-foreground">+91 9876543210</p>
                 </div>
                 <Button variant="outline" size="sm" className="w-full">Edit Profile</Button>
