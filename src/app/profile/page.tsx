@@ -5,14 +5,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { Package, MapPin, Settings, LogOut, ChevronRight, Star, Moon, Sun } from "lucide-react";
+import { Package, MapPin, Settings, LogOut, ChevronRight, Star, Moon, Sun, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { useFavorites } from "@/hooks/use-favorites";
+import { RestaurantCard } from "@/components/restaurant-card";
 
 export default function ProfilePage() {
-  const [activeTab, setActiveTab] = useState<'orders' | 'settings' | 'addresses' | 'reviews'>('orders');
+  const [activeTab, setActiveTab] = useState<'orders' | 'settings' | 'addresses' | 'reviews' | 'favorites'>('orders');
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const { favorites } = useFavorites();
 
   // Initialize theme from document class
   useEffect(() => {
@@ -57,32 +60,40 @@ export default function ProfilePage() {
           </Card>
 
           <nav className="space-y-1">
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               className={`w-full justify-start gap-3 ${activeTab === 'orders' ? 'bg-primary/10 text-primary' : ''}`}
               onClick={() => setActiveTab('orders')}
             >
               <Package className="w-4 h-4" />
               Orders
             </Button>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               className={`w-full justify-start gap-3 ${activeTab === 'addresses' ? 'bg-primary/10 text-primary' : ''}`}
               onClick={() => setActiveTab('addresses')}
             >
               <MapPin className="w-4 h-4" />
               Addresses
             </Button>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
+              className={`w-full justify-start gap-3 ${activeTab === 'favorites' ? 'bg-primary/10 text-primary' : ''}`}
+              onClick={() => setActiveTab('favorites')}
+            >
+              <Heart className="w-4 h-4" />
+              Favorites
+            </Button>
+            <Button
+              variant="ghost"
               className={`w-full justify-start gap-3 ${activeTab === 'reviews' ? 'bg-primary/10 text-primary' : ''}`}
               onClick={() => setActiveTab('reviews')}
             >
               <Star className="w-4 h-4" />
               Reviews
             </Button>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               className={`w-full justify-start gap-3 ${activeTab === 'settings' ? 'bg-primary/10 text-primary' : ''}`}
               onClick={() => setActiveTab('settings')}
             >
@@ -133,6 +144,27 @@ export default function ProfilePage() {
             </>
           )}
 
+          {activeTab === 'favorites' && (
+            <div className="space-y-6">
+              <h1 className="text-2xl font-bold">Your Favorites</h1>
+              {favorites.length > 0 ? (
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  {favorites.map((resto) => (
+                    <RestaurantCard key={resto.id} restaurant={resto} />
+                  ))}
+                </div>
+              ) : (
+                <div className="py-20 text-center space-y-4 border rounded-xl bg-muted/20">
+                  <div className="mx-auto h-16 w-16 bg-muted rounded-full flex items-center justify-center">
+                    <Heart className="h-8 w-8 text-muted-foreground" />
+                  </div>
+                  <h3 className="text-xl font-bold">No favorites yet</h3>
+                  <p className="text-muted-foreground">Tap the heart icon on any restaurant to save it here.</p>
+                </div>
+              )}
+            </div>
+          )}
+
           {activeTab === 'settings' && (
             <>
               <h1 className="text-2xl font-bold">Settings</h1>
@@ -148,7 +180,7 @@ export default function ProfilePage() {
                     </div>
                     <div className="flex items-center gap-2">
                       {isDarkMode ? <Moon className="h-4 w-4 text-muted-foreground" /> : <Sun className="h-4 w-4 text-muted-foreground" />}
-                      <Switch 
+                      <Switch
                         checked={isDarkMode}
                         onCheckedChange={toggleDarkMode}
                       />
