@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 
 export default function CheckoutPage() {
-  const { cart, totalPrice, clearCart } = useCart();
+  const { cart, totalPrice, confirmOrder } = useCart();
   const [step, setStep] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'cod'>('card');
   const router = useRouter();
@@ -32,11 +32,14 @@ export default function CheckoutPage() {
   }
 
   const handleOrder = () => {
+    // Determine the restaurant name from the first item in the cart, or use a default
+    const restaurantName = cart.length > 0 ? (cart[0] as any).restaurantTitle || "FoodFetch Restaurant" : "FoodFetch Restaurant";
+
+    confirmOrder(restaurantName);
     setStep(3);
-    clearCart();
     toast({
       title: "Order Placed!",
-      description: paymentMethod === 'cod' 
+      description: paymentMethod === 'cod'
         ? "Your order is confirmed. Please keep cash ready at the time of delivery."
         : "Your delicious food is on the way.",
     });
@@ -111,7 +114,7 @@ export default function CheckoutPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div 
+                <div
                   className={`border rounded-lg p-4 flex items-center justify-between cursor-pointer transition-colors ${paymentMethod === 'card' ? 'border-primary bg-primary/5' : 'hover:bg-muted/50'}`}
                   onClick={() => setPaymentMethod('card')}
                 >
@@ -127,7 +130,7 @@ export default function CheckoutPage() {
                   </div>
                 </div>
 
-                <div 
+                <div
                   className={`border rounded-lg p-4 flex items-center justify-between cursor-pointer transition-colors ${paymentMethod === 'cod' ? 'border-primary bg-primary/5' : 'hover:bg-muted/50'}`}
                   onClick={() => setPaymentMethod('cod')}
                 >
@@ -166,9 +169,9 @@ export default function CheckoutPage() {
                   </div>
                 ))}
               </div>
-              
+
               <Separator />
-              
+
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Item Total</span>
@@ -191,8 +194,8 @@ export default function CheckoutPage() {
                 <span>₹{totalPrice + 45}</span>
               </div>
 
-              <Button 
-                className="w-full bg-accent hover:bg-accent/90 h-12 text-lg font-bold" 
+              <Button
+                className="w-full bg-accent hover:bg-accent/90 h-12 text-lg font-bold"
                 disabled={step < 2}
                 onClick={handleOrder}
               >

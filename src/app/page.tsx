@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { CATEGORIES, RESTAURANTS } from "@/lib/data";
 import { RestaurantCard } from "@/components/restaurant-card";
-import { Recommendations } from "@/components/recommendations";
+import { AiSuggestions } from "@/components/AiSuggestions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
@@ -102,7 +102,7 @@ export default function Home() {
       </section>
 
       {/* AI Recommendations */}
-      {!searchQuery && <Recommendations />}
+      {!searchQuery && <AiSuggestions />}
 
       {/* Main Restaurant Listing */}
       <section className="space-y-6">

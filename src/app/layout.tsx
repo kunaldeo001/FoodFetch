@@ -4,6 +4,7 @@ import { Navbar } from '@/components/navbar';
 import { CartProvider } from '@/hooks/use-cart';
 import { FavoritesProvider } from '@/hooks/use-favorites';
 import { Toaster } from '@/components/ui/toaster';
+import { SupportChatbot } from '@/components/SupportChatbot';
 
 export const metadata: Metadata = {
   title: 'FoodFetch - Fast & Fresh Food Delivery',
@@ -64,6 +65,7 @@ export default function RootLayout({
                 </div>
               </footer>
             </div>
+            <SupportChatbot />
             <Toaster />
           </CartProvider>
         </FavoritesProvider>

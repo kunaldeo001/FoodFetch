@@ -10,12 +10,18 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { useFavorites } from "@/hooks/use-favorites";
+import { useCart } from "@/hooks/use-cart";
 import { RestaurantCard } from "@/components/restaurant-card";
 
 export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<'orders' | 'settings' | 'addresses' | 'reviews' | 'favorites'>('orders');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { favorites } = useFavorites();
+  const { orderHistory } = useCart();
+  const pastOrders = orderHistory.length > 0 ? orderHistory : [
+    { id: "FF-102", restaurant: "Biryani Blues", date: "Yesterday, 8:30 PM", status: "Delivered", amount: 450, items: ["Chicken Biryani", "Paneer Tikka"] },
+    { id: "FF-098", restaurant: "Pizza Paradise", date: "4 March, 1:15 PM", status: "Delivered", amount: 645, items: ["Margherita Pizza", "Garlic Bread"] },
+  ];
 
   // Initialize theme from document class
   useEffect(() => {
@@ -32,11 +38,6 @@ export default function ProfilePage() {
       localStorage.setItem('theme', 'light');
     }
   };
-
-  const pastOrders = [
-    { id: "FF-102", restaurant: "Biryani Blues", date: "Yesterday, 8:30 PM", status: "Delivered", amount: 450, items: ["Chicken Biryani", "Paneer Tikka"] },
-    { id: "FF-098", restaurant: "Pizza Paradise", date: "4 March, 1:15 PM", status: "Delivered", amount: 645, items: ["Margherita Pizza", "Garlic Bread"] },
-  ];
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
