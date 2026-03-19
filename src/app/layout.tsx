@@ -8,6 +8,9 @@ import { Toaster } from '@/components/ui/toaster';
 export const metadata: Metadata = {
   title: 'FoodFetch - Fast & Fresh Food Delivery',
   description: 'Order food from your favorite restaurants with FoodFetch.',
+  icons: {
+    icon: [],
+  },
 };
 
 export default function RootLayout({
